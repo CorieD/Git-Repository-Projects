@@ -1,0 +1,77 @@
+/*
+Author: Corie Stinson
+Program Title: Hotel Occupancy
+
+
+File Description: This program calculates and displays the percentage occupancy of the hotel.
+*/
+
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+
+
+using namespace std; 
+
+
+int main()
+{
+
+	float floors, floor_room, rooms_occupied;
+	float total_rooms, total_occupied, total_vacant, counter; 
+	double percentage;
+	total_rooms = 0;
+	total_occupied = 0;
+	counter = 0;
+
+	cout << "How many floors are in the hotel? ";
+	cin >> floors; 
+
+	if (floors <= 0) {
+		while (floors <= 0) {
+			cout << "Enter a positive integer";
+			cout << "How many floors are in the hotel? ";
+		}
+	}
+
+	while (floors != counter) {
+		if (counter == 12)
+			counter++;
+		else if (counter != floors) {
+			counter++;
+			cout << "\nHow many total rooms are on Floor " << counter << "? ";
+			cin >> floor_room;
+cout << "How many rooms are occupied on Floor " << counter << "? ";
+cin >> rooms_occupied;
+if (floor_room < rooms_occupied) {
+    while (floor_room < rooms_occupied) {
+        cout << "n\-->Error: Floor occupancy cannot exceed room count. Enter again...\n";
+        cout << "\nHow many total rooms are on Floor " << counter << "? ";
+        cin >> floor_room;
+        cout << "How many rooms are occupied on Floor " << counter << "? ";
+        cin >> rooms_occupied;
+    }
+
+}
+total_rooms = total_rooms + floor_room;
+total_occupied = total_occupied + rooms_occupied;
+floor_room = 0;
+			rooms_occupied = 0;
+		}
+	}
+	total_vacant = (total_rooms - total_occupied);
+	percentage = (total_occupied / total_rooms) * 100;
+
+	cout << "Total Rooms: " << total_rooms << "\n";
+	cout << "Total Occupancy: " << total_occupied << endl;
+	cout << "Total Vacancy: " << total_vacant << endl;
+	cout << fixed << setprecision(2);
+	cout << "Percentage Occupied: " << percentage << "%\n\n\n";
+
+
+
+
+
+}
